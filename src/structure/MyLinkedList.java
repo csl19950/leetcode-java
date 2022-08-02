@@ -86,7 +86,7 @@ public class MyLinkedList<E> implements Iterable<E> {
     }
 
 
-    public E removeFirst(E e){
+    public E removeFirst(){
         if(size < 1){
             throw new NoSuchElementException();
         }
