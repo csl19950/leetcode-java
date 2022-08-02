@@ -1,5 +1,6 @@
 package src.structure;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -149,11 +150,36 @@ public class MyArrayList<E> implements Iterable<E> {
         }
 
         public Iterator<E> iterator(){
-
-            return iterator();
+            return new Iterator<E>() {
+                private int p = 0;
+                public boolean hasNext(){
+                    return p != size;
+                }
+                public E next(){
+                    return data[p++];
+                }
+            };
         }
 
+        private void display(){
+            System.out.println("size="+size+" cap=" + data.length);
+            System.out.println(Arrays.toString(data));
+        }
 
+    public static void main(String[] args) {
+        MyArrayList<Integer> arr = new MyArrayList<>(3);
+        //add 5 element
+        for(int i = 0; i <= 5; i++){
+            arr.addLast(i);
+        }
+        arr.remove(3);
+        arr.add(1,9);
+        arr.addFirst(100);
+        int var = arr.removeLast();
+        for(int j = 0; j < arr.size(); j++) {
+            System.out.println(arr.get(j));
+        }
 
+    }
 
 }
